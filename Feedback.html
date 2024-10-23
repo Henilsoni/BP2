@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            text-align: center;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #fda085;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #f6d365;
+        }
+    </style>
+    <script>
+        function getSecretSentence() {
+            const date = new Date();
+
+            // Get hours in 12-hour format, remove leading zeros
+            let hours = date.getHours() % 12 || 12; // Convert to 12-hour format and handle 0 as 12
+            hours = hours.toString(); // Convert to string without leading zero
+
+            const day = date.getDate().toString().padStart(2, '0');   // Get current day (e.g., 09)
+            const month = (date.getMonth() + 1).toString().padStart(2, '0'); // Get current month (e.g., 10 for October)
+
+            // The secret sentence with current time and date
+            return `I am with you till ${hours}${day}`;
+        }
+
+        function checkFeedback() {
+            const secretSentence = getSecretSentence(); // Get dynamic secret sentence
+            const feedback = document.getElementById("feedback").value;
+
+            if (feedback === secretSentence) {
+                window.location.href = "index.html";  // Redirect to your secret HTML file
+            } else {
+                document.getElementById("message").innerText = "Thank you for giving feedback!";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Feedback Form</h2>
+        <textarea id="feedback" rows="5" placeholder="Enter your feedback"></textarea>
+        <button onclick="checkFeedback()">Submit</button>
+        <p id="message" style="color:green; margin-top: 10px;"></p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            background-color: #28a745;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .message {
+            margin-top: 10px;
+            color: red;
+        }
+        /* Style to position the button in the top-right corner */
+        .top-right-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .top-right-button:hover {
+            background-color: #45a049; /* Darker green on hover */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p><h2>Login</h2><h5>Hint: Name of person who had help me to tell you my feeling.</h5><h5>Note: Starting letter should be capital.</h5></p>
+        <input type="password" id="password" placeholder="Enter password" />
+        <button onclick="checkPassword()">Submit</button>
+        <div class="message" id="message"></div>
+    </div>
+
+    <script>
+        // Set your desired password here
+        const correctPassword = "Payal"; // Change this to your desired password
+
+        function checkPassword() {
+            const passwordInput = document.getElementById("password").value;
+            const messageDiv = document.getElementById("message");
+
+            if (passwordInput === correctPassword) {
+                messageDiv.innerHTML = "<span style='color: green;'>Password is correct! Redirecting...</span>";
+                window.location.href = "pass.html"
+                // You can redirect to another HTML file or perform any action here
+                // For example, to redirect to another page:
+                // window.location.href = "yourfile.html";
+            } else {
+                messageDiv.innerHTML = "Incorrect password. Please try again.";
+            }
+        }
+    </script>
+    <script>
+        // Function to open another HTML file
+        function openHTMLFile() {
+            window.location.href = 'login2.html'; // Replace 'yourfile.html' with the name of your HTML file
+        }
+    </script>
+</body>
+</html>
